@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_193905) do
+ActiveRecord::Schema.define(version: 2019_08_31_204325) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "concerts", force: :cascade do |t|
+    t.integer "artist_id"
+    t.datetime "on_sale_datetime"
+    t.datetime "datetime"
+    t.string "venue_name"
+    t.string "venue_city"
+    t.string "venue_region"
+    t.string "venue_country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_concerts_on_artist_id"
+  end
+
+  create_table "user_artists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_user_artists_on_artist_id"
+    t.index ["user_id"], name: "index_user_artists_on_user_id"
+  end
+
+  create_table "user_concerts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "concert_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concert_id"], name: "index_user_concerts_on_concert_id"
+    t.index ["user_id"], name: "index_user_concerts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

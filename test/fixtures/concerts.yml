@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: one
+  on_sale_datetime: 2019-08-31 16:41:13
+  datetime: 2019-08-31 16:41:13
+  venue_name: MyString
+  venue_city: MyString
+  venue_region: MyString
+  venue_country: MyString
+
+two:
+  artist: two
+  on_sale_datetime: 2019-08-31 16:41:13
+  datetime: 2019-08-31 16:41:13
+  venue_name: MyString
+  venue_city: MyString
+  venue_region: MyString
+  venue_country: MyString
