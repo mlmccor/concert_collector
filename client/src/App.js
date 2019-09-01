@@ -17,7 +17,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getArtist: () => dispatch(fetchArtist())
+  getArtist: (query) => dispatch(fetchArtist(query))
 })
 
 export default connect(null,mapDispatchToProps)(App);

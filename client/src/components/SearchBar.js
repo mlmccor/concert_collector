@@ -17,7 +17,7 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.fetchArtist()
+    this.props.fetchArtist(this.state.text)
   }
 
   render() {

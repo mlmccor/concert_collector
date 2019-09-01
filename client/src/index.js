@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import rootReducer from './reducers/index'
+import thunk from 'redux-thunk'
 
-import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk))
+// TODO: finish SearchBar
 
 
 
