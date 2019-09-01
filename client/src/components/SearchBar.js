@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import { fetchArtist } from '../actions/artistActions'
 
 class SearchBar extends Component {
   constructor() {
@@ -18,7 +17,7 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-
+    this.props.fetchArtist()
   }
 
   render() {
