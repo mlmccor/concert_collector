@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :user_artists
-  resources :user_concerts
-  resources :concerts
-  resources :artists
+
+  namespace :api do
+    namespace :v1 do
+      resources :user_artists
+      resources :user_concerts
+      resources :concerts
+      resources :artists      
+    end
+  end
   devise_for :users
   get 'welcome/home'
   get '/app', to: 'welcome#app', as: 'app'
