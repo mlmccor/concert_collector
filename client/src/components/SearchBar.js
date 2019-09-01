@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { fetchArtist } from '../actions/artistActions'
+
 class SearchBar extends Component {
   constructor() {
     super()
