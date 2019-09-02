@@ -7,6 +7,7 @@ class SearchBar extends Component {
     this.state = {
       text:''
     }
+    this.handleSubmit= this.handleSubmit.bind(this)
   }
 
   handleChange = (e) => {
@@ -17,7 +18,9 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.fetchArtist(this.state.text)
+    let url = `https://rest.bandsintown.com/artists/`+ this.state.text + `?app_id=ecd2c12560633b6ddf83a6d2a823ebc7`
+    // TODO: extract API key
+    fetch(url).then(artist => artist.json()).then(artist => console.log(artist))
   }
 
   render() {
