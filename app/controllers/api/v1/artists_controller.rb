@@ -2,13 +2,14 @@ module Api
   module V1
     class ArtistsController < ApplicationController
       def index
-        binding.pry
+        render json: Artist.all, status: 201
       end
       def show
-        binding.pry
       end
       def create
-        binding.pry
+        @artist = Artist.create(artist_params)
+        current_user.artists.push(@artist)
+        render json: @artist, status:201
       end
 
 

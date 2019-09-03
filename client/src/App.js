@@ -3,7 +3,9 @@ import './App.css';
 import { connect } from 'react-redux'
 
 import SearchBar from './components/SearchBar'
-import { fetchArtist } from './actions/artistActions'
+import CurrentArtist from './containers/CurrentArtist'
+import ArtistsCollection from './containers/ArtistsCollection'
+import { fetchArtist, fetchMyArtists } from './actions/artistActions'
 
 
 
@@ -19,14 +21,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <CurrentArtist currentArtist={this.props.currentArtist}/>
         <SearchBar getArtist={this.props.getArtist}/>
+        <ArtistsCollection artistList={this.props.artists} getArtists={this.props.getMyArtists}/>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return state.artists
+}
+
 const mapDispatchToProps = dispatch => ({
-  getArtist: (data) => dispatch(fetchArtist(data))
+  getArtist: (data) => dispatch(fetchArtist(data)),
+  getMyArtists: () => dispatch(fetchMyArtists())
 })
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

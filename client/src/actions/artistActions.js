@@ -17,12 +17,32 @@ export function fetchArtist(data) {
           body: JSON.stringify(artist)
         })
           .then(resp => {
-            resp.json()
+            debugger
+            return resp.json()
           })
           .then(artData => {
+            debugger
+            console.log(artData)
             return dispatch({type: 'ADD_ARTIST', payload: artData});
           });
       })
-// TODO: fix post request
+  }
+}
+
+export function fetchMyArtists() {
+  return (dispatch) => {
+    dispatch({type:'LOADING_ARTISTS'});
+    let token = document.querySelector('meta[name="csrf-token"]').content
+    return fetch('/api/v1/artists', {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error",
+    }).then(resp => resp.json()).then(artists => {
+      return dispatch({type:'RETRIEVE_ARTISTS', payload: artists})
+    })
   }
 }
