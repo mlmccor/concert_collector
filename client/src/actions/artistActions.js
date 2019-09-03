@@ -14,7 +14,7 @@ export function fetchArtist(data) {
             'X-CSRF-Token': token
           },
           redirect: "error",
-          body: artist
+          body: JSON.stringify(artist)
         })
           .then(resp => {
             resp.json()
@@ -23,6 +23,6 @@ export function fetchArtist(data) {
             return dispatch({type: 'ADD_ARTIST', payload: artData});
           });
       })
-
+// TODO: fix post request
   }
 }

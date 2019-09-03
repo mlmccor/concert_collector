@@ -10,6 +10,18 @@ module Api
       def create
         binding.pry
       end
+
+
+
+
+      private
+
+      def artist_params
+        params.require(:artist).permit(:name, :image_url)
+      end
+
+
+
     end
   end
 end
