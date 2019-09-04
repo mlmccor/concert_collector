@@ -6,3 +6,7 @@ export function getArtistConcerts(artistName) {
       .then(concerts => dispatch({type: 'ADD_ARTIST_CONCERTS', payload: concerts}))
   })
 }
+
+export function addConcert(concert) {
+  return
+}

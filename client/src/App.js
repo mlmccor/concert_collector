@@ -8,7 +8,7 @@ import ArtistsCollection from './containers/ArtistsCollection'
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
-import {getArtistConcerts} from './actions/concertActions'
+import {getArtistConcerts, addConcert} from './actions/concertActions'
 
 class App extends Component {
 
@@ -35,7 +35,8 @@ const mapDispatchToProps = dispatch => ({
   getArtist: (data) => dispatch(searchArtist(data)),
   getMyArtists: () => dispatch(fetchMyArtists()),
   selectArtist: (id) => dispatch(selectArtist(id)),
-  getConcerts: (name) => dispatch(getArtistConcerts(name))
+  getConcerts: (name) => dispatch(getArtistConcerts(name)),
+  addConcert: (concert) => dispatch(addConcert(concert))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
