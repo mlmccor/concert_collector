@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar getArtist={this.props.getArtist}/>
-        <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts}/>
+        <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
         <ArtistsCollection artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
       </div>
     );

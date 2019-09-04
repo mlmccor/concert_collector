@@ -14,7 +14,7 @@ class CurrentArtist extends Component {
       <div>
         <h2>Current Artist: {this.props.currentArtist.name}</h2>
         <img src={this.props.currentArtist.image_url}/>
-        <ConcertList concerts={this.props.concerts}/>
+        <ConcertList concerts={this.props.concerts} addConcert={this.props.add}/>
       </div>
     )
   }

@@ -7,8 +7,8 @@ class Concert extends Component {
     return(
       <li id='concert'>
         {this.props.date}<br/>
-        {this.props.venue.city}, {this.props.venue.region}, {this.props.venue.country}<br/>
-        <AddButton/>
+        {this.props.concert.venue.city}, {this.props.concert.venue.region}, {this.props.concert.venue.country}<br/>
+        <AddButton addConcert={this.props.addConcert} concert={this.props.concert}/>
       </li>
     )
   }

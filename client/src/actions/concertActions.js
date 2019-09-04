@@ -8,5 +8,21 @@ export function getArtistConcerts(artistName) {
 }
 
 export function addConcert(concert) {
-  return
+  return (dispatch => {
+    console.log(concert)
+    dispatch({type: 'PREPARING_ARTISTS'})
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    return fetch('/api/v1/concerts', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error",
+      body: JSON.stringify(concert)
+    }).then(response => response.json()).then(concert => {
+      return dispatch({type: 'ADD_CONCERT', payload: concert})
+    })
+  })
 }
