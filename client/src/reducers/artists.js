@@ -9,6 +9,13 @@ export default (state = {currentArtist: {}, artists: []}, action) => {
     case 'RETRIEVE_ARTISTS':
       return {...state, artists: action.payload}
 
+    case 'FINDING_ARTIST':
+      return state
+
+    case 'SELECT_ARTIST':
+      return {...state, currentArtist: action.payload}
+
+
     default:
       return state
   }

@@ -5,6 +5,10 @@ module Api
         render json: Artist.all, status: 201
       end
       def show
+        artist = Artist.find(params[:id])
+        if artist
+          render json: artist, status: 201
+        end
       end
       def create
         @artist = Artist.create(artist_params)
