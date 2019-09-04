@@ -11,7 +11,7 @@ import MyConcert from './components/MyConcert'
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
-import {getArtistConcerts, addConcert, getMyConcerts} from './actions/concertActions'
+import {getArtistConcerts, addConcert, getMyConcerts, removeConcert} from './actions/concertActions'
 
 class App extends Component {
 
@@ -26,7 +26,7 @@ class App extends Component {
         <SearchBar getArtist={this.props.getArtist}/>
         <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
         <ArtistsCollection artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
-        <ConcertsCollection concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts}/>
+        <ConcertsCollection concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>
       </div>
     );
   }
@@ -42,7 +42,8 @@ const mapDispatchToProps = dispatch => ({
   selectArtist: (id) => dispatch(selectArtist(id)),
   getConcerts: (name) => dispatch(getArtistConcerts(name)),
   addConcert: (concert) => dispatch(addConcert(concert)),
-  getMyConcerts: () => dispatch(getMyConcerts())
+  getMyConcerts: () => dispatch(getMyConcerts()),
+  removeConcert: (id) => dispatch(removeConcert(id))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

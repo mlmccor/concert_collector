@@ -7,7 +7,7 @@ class ConcertsCollection extends Component {
     return(
       <div>
         <h4>My Concerts</h4>
-        <MyConcertList concerts={this.props.concerts}/>
+        <MyConcertList concerts={this.props.concerts} removeConcert={this.props.removeConcert}/>
       </div>
     )
   }

@@ -21,6 +21,12 @@ module Api
         end
       end
 
+      def destroy
+        concert = Concert.find(params[:id])
+        concert.destroy
+        render json: concert, status: 201
+      end
+
 
 
 

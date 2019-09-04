@@ -6,8 +6,7 @@ class MyConcertList extends Component {
   generateConcerts() {
     return this.props.concerts.map((concert) => {
       let newDate = new Date(concert.datetime)
-      console.log(newDate)
-      return <MyConcert concert={concert} date={newDate.toString()} addConcert={this.props.addConcert}/>
+      return <MyConcert concert={concert} date={newDate.toString()} addConcert={this.props.addConcert} removeConcert={this.props.removeConcert}/>
     })
   }
 
