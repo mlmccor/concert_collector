@@ -26,3 +26,23 @@ export function addConcert(concert) {
     })
   })
 }
+
+
+export function getMyConcerts() {
+  return (dispatch) => {
+    dispatch({type: 'RETREIVING_MY_CONCERTS'});
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    return fetch('/api/v1/concerts', {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error"
+    }).then(response => response.json()).then(concerts => {
+      console.log(concerts)
+      return dispatch({type: 'DISPLAY_MY_CONCERTS', payload: concerts})
+    })
+  }
+}
