@@ -5,17 +5,14 @@ import { connect } from 'react-redux'
 import SearchBar from './components/SearchBar'
 import CurrentArtist from './containers/CurrentArtist'
 import ArtistsCollection from './containers/ArtistsCollection'
+
+
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
 
-
-
-
 class App extends Component {
-  handleSearch(data) {
-    let url = `https://rest.bandsintown.com/artists/`+ data + `?app_id=ecd2c12560633b6ddf83a6d2a823ebc7`
-    // TODO: extract API key
-    fetch(url).then(artist => artist.json()).then(artist => {
-      console.log(this)})
+
+  componentDidMount() {
+    this.props.getMyArtists()
   }
 
   render() {
@@ -23,7 +20,7 @@ class App extends Component {
       <div className="App">
         <SearchBar getArtist={this.props.getArtist}/>
         <CurrentArtist currentArtist={this.props.currentArtist}/>
-        <ArtistsCollection artistList={this.props.artists} getArtists={this.props.getMyArtists} selectArtist={this.props.selectArtist}/>
+        <ArtistsCollection artistList={this.props.artists} selectArtist={this.props.selectArtist}/>
       </div>
     );
   }

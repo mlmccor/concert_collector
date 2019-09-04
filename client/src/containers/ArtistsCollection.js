@@ -7,9 +7,6 @@ class ArtistsCollection extends Component {
     this.handleClick= this.handleClick.bind(this)
   }
 
-  componentDidMount() {
-    this.props.getArtists()
-  }
 
   handleClick(e) {
     this.props.selectArtist(e.target.id)

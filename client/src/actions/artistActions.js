@@ -57,10 +57,7 @@ export function selectArtist(id) {
       },
       redirect: "error"
     })
-    .then(resp => {
-      return resp.json()
-    })
-    .then(artist => {
+    .then(resp => resp.json()).then(artist => {
       return dispatch({type:'SELECT_ARTIST', payload: artist})
     })
   }
