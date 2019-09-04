@@ -8,6 +8,7 @@ import ArtistsCollection from './containers/ArtistsCollection'
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
+import {getArtistConcerts} from './actions/concertActions'
 
 class App extends Component {
 
@@ -19,21 +20,22 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar getArtist={this.props.getArtist}/>
-        <CurrentArtist currentArtist={this.props.currentArtist}/>
-        <ArtistsCollection artistList={this.props.artists} selectArtist={this.props.selectArtist}/>
+        <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts}/>
+        <ArtistsCollection artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return state.artists
+  return state
 }
 
 const mapDispatchToProps = dispatch => ({
   getArtist: (data) => dispatch(searchArtist(data)),
   getMyArtists: () => dispatch(fetchMyArtists()),
-  selectArtist: (id) => dispatch(selectArtist(id))
+  selectArtist: (id) => dispatch(selectArtist(id)),
+  getConcerts: (name) => dispatch(getArtistConcerts(name))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
