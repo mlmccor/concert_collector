@@ -11,8 +11,8 @@ export default (state = {artistConcerts: [], myConcerts: []}, action ) => {
     case 'DISPLAY_MY_CONCERTS':
       return {...state, myConcerts: action.payload}
     case 'DELETE_CONCERT':
-      return {...state, myConcerts: state.myConcerts.filter((concert) => {
-        concert.name !== action.payload.name
+      return {...state, myConcerts: state.myConcerts.filter(concert => {
+        return concert.id !== action.payload.id
       })}
     default:
       return state

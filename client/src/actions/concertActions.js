@@ -41,7 +41,6 @@ export function getMyConcerts() {
       },
       redirect: "error"
     }).then(response => response.json()).then(concerts => {
-      console.log(concerts)
       return dispatch({type: 'DISPLAY_MY_CONCERTS', payload: concerts})
     })
   }

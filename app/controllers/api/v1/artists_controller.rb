@@ -24,6 +24,7 @@ module Api
       def artist_params
         params.require(:artist).permit(:name, :image_url)
       end
+      # TODO: allow API ids
 
 
 

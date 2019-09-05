@@ -35,7 +35,7 @@ module Api
 
 
       def concert_params
-        params.require(:concert).permit(:id, :on_sale_datetime, :datetime, :venue_name, :venue_country, :venue_region, :venue_city)
+        params.require(:concert).permit(:on_sale_datetime, :datetime, :venue_name, :venue_country, :venue_region, :venue_city)
       end
     end
   end
