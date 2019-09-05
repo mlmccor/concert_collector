@@ -1,14 +1,6 @@
 import React, { Component } from 'react'
 
 
-class AddButton extends Component {
-  handleClick = (e) => {
-    this.props.addConcert(this.props.concert)
-  }
-  render() {
-    return(
-      <button onClick={this.handleClick}>Add</button>
-    )
-  }
-}
+const AddButton = ({addConcert, concert}) => <button onClick={(e) => addConcert(concert)}>Add</button>
+
 export default AddButton
