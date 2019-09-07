@@ -28,7 +28,6 @@ class SearchBar extends Component {
     return(
       <div>
         <p>Search for a new Artist Here</p>
-        <br/>
         <form onSubmit={this.handleSubmit}>
           <label>Artist Name </label>
           <input name='text' onChange={this.handleChange} />

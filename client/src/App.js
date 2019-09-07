@@ -4,12 +4,9 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-import SearchBar from './components/SearchBar'
-import CurrentArtist from './containers/CurrentArtist'
-import ArtistsCollection from './containers/ArtistsCollection'
-import ConcertsCollection from './containers/ConcertsCollection'
-import MyConcertList from './components/MyConcertList'
+import Home from './containers/Home'
 import MyConcert from './components/MyConcert'
+import ConcertShow from './components/ConcertShow'
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
@@ -22,18 +19,18 @@ class App extends Component {
     this.props.getMyConcerts()
   }
 
+
+
   render() {
     return (
       <Router>
         <div className="App">
-          <SearchBar getArtist={this.props.getArtist}/>
+          <Link to='/app'>Home</Link>
+          // TODO: route paths
+          // TODO: add links to concert show
+          <Route exact path='/app' render= {props => <Home {...this.props} />}/>
+          <Route path='/concert_data' render= {props => <ConcertShow {...concert} />}/>
 
-          <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
-
-          <ArtistsCollection
-          artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
-
-          <ConcertsCollection concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>
         </div>
       </Router>
     );
