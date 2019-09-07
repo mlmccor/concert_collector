@@ -7,7 +7,9 @@ const MyConcertList = ({concerts, removeConcert}) => {
       <ul>
       {concerts.map((concert) => {
         let newDate = new Date(concert.datetime)
-        return <MyConcert concert={concert} date={newDate.toString()}  removeConcert={removeConcert}/>
+        let time = newDate.getHours() + ':' + newDate.getMinutes()
+
+        return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'}  removeConcert={removeConcert}/>
       })}
       </ul>
     </div>

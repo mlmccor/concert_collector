@@ -7,7 +7,7 @@ const Concert = ({date, concert, addConcert}) => {
   return (
     <li id='concert'>{date}<br/>
     {concert.venue.city}, {concert.venue.region}, {concert.venue.country}<br/>
-    <AddButton addConcert={addConcert} concert={concert}/></li>
+    <AddButton addConcert={addConcert} concert={concert}/><br/><br/></li>
   )}
 
 export default Concert

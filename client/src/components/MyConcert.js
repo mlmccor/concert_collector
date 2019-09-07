@@ -4,12 +4,14 @@ import DeleteButton from './DeleteButton'
 import ConcertShow from './ConcertShow'
 
 const MyConcert = ({date, concert, removeConcert}) => {
+  let url = '/concerts/' + concert.id
   return (
     <li id='concert'>
-    <Link to='/concert_data'>{date}<br/>
+    <Link to={url}>{date}<br/>
       {concert.venue_city}, {concert.venue_region},
       {concert.venue_country}</Link>
       <DeleteButton deleteConcert={removeConcert} concertId={concert.id}/>
+      <br/><br/>
     </li>
   )
 }

@@ -9,6 +9,11 @@ module Api
         end
       end
 
+      def show
+        concert = Concert.find(params[:id])
+        render json: concert
+      end
+
       def create
         concert = Concert.new(concert_params)
         concert.venue_name = params[:venue][:name]

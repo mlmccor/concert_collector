@@ -29,7 +29,7 @@ class App extends Component {
           // TODO: route paths
           // TODO: add links to concert show
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
-          <Route path='/concert_data' render= {props => <ConcertShow {...concert} />}/>
+          <Route path='/concerts/:id' render= {props => <ConcertShow {...concert} />}/>
 
         </div>
       </Router>
