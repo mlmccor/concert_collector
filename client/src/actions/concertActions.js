@@ -47,7 +47,6 @@ export function getMyConcerts() {
 }
 
 export function removeConcert(id) {
-  console.log(id)
   let url = '/api/v1/concerts/' + id
   return (dispatch) => {
     let token = document.querySelector('meta[name="csrf-token"]').content;
@@ -62,5 +61,24 @@ export function removeConcert(id) {
     }).then(response => response.json()).then(concert => {
       return dispatch({type: 'DELETE_CONCERT', payload: concert})
     })
+  }
+}
+
+export function showConcert(id) {
+  return (dispatch) => {
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    let url = '/api/v1/concerts/' + id
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error"
+    }).then(response => response.json()).then(concert => {
+      return dispatch({type: 'SHOW_CONCERT', payload: concert})
+    })
+
   }
 }

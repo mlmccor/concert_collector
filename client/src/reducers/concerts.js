@@ -1,4 +1,4 @@
-export default (state = {artistConcerts: [], myConcerts: []}, action ) => {
+export default (state = {artistConcerts: [], myConcerts: [], concertData: {}}, action ) => {
   switch(action.type) {
     case 'RETRIEVING_ARTIST_CONCERTS':
       return state
@@ -14,6 +14,8 @@ export default (state = {artistConcerts: [], myConcerts: []}, action ) => {
       return {...state, myConcerts: state.myConcerts.filter(concert => {
         return concert.id !== action.payload.id
       })}
+    case 'SHOW_CONCERT':
+      return {...state, concertData: action.payload}
     default:
       return state
   }

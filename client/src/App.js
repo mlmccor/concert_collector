@@ -10,7 +10,7 @@ import ConcertShow from './components/ConcertShow'
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
-import {getArtistConcerts, addConcert, getMyConcerts, removeConcert} from './actions/concertActions'
+import {getArtistConcerts, addConcert, getMyConcerts, removeConcert, showConcert} from './actions/concertActions'
 
 class App extends Component {
 
@@ -29,7 +29,7 @@ class App extends Component {
           // TODO: route paths
           // TODO: add links to concert show
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
-          <Route path='/concerts/:id' render= {props => <ConcertShow {...concert} />}/>
+          <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
 
         </div>
       </Router>
@@ -48,7 +48,8 @@ const mapDispatchToProps = dispatch => ({
   getConcerts: (name) => dispatch(getArtistConcerts(name)),
   addConcert: (concert) => dispatch(addConcert(concert)),
   getMyConcerts: () => dispatch(getMyConcerts()),
-  removeConcert: (id) => dispatch(removeConcert(id))
+  removeConcert: (id) => dispatch(removeConcert(id)),
+  showConcert: (id) => dispatch(showConcert(id))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
