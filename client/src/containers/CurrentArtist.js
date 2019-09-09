@@ -11,7 +11,7 @@ class CurrentArtist extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <h2>Current Artist: {this.props.currentArtist.name}</h2>
         <img src={this.props.currentArtist.image_url}/>
         <ConcertList concerts={this.props.concerts} addConcert={this.props.add}/>

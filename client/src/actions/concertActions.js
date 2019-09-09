@@ -9,7 +9,6 @@ export function getArtistConcerts(artistName) {
 
 export function addConcert(concert) {
   return (dispatch => {
-    console.log(concert)
     dispatch({type: 'PREPARING_ARTISTS'})
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/concerts', {
