@@ -26,8 +26,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <Link to='/app'>Home</Link>
-          // TODO: route paths
-          // TODO: add links to concert show
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
           <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
 
