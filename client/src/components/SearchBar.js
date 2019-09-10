@@ -30,7 +30,10 @@ class SearchBar extends Component {
         <p>Search for a new Artist Here</p>
         <form onSubmit={this.handleSubmit}>
           <label>Artist Name </label>
-          <input name='text' onChange={this.handleChange} />
+          <input
+             name='text'
+             onChange={this.handleChange}
+             value={this.state.text} />
           <input type='submit' name='search'/>
         </form>
       </div>

@@ -11,14 +11,14 @@ class Home extends Component {
   render() {
     return (
       <div className='home'>
-        <SearchBar getArtist={this.props.getArtist}/>
+        <SearchBar
+          getArtist={this.props.getArtist}/>
 
-        <CurrentArtist currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
+        <CurrentArtist
+          currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
 
         <ArtistsCollection
-        artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
-
-        <ConcertsCollection concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>
+          artistList={this.props.artists.artists} selectArtist={this.props.selectArtist}/>
       </div>
     )
   }

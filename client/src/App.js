@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './containers/Home'
 import MyConcert from './components/MyConcert'
 import ConcertShow from './components/ConcertShow'
+import ConcertsCollection from './containers/ConcertsCollection'
+
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
@@ -26,8 +28,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <Link to='/app'>Home</Link>
+          <Link to='/concerts'>My Concerts</Link>
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
           <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
+          <Route exact path='/concerts' render= {props => <ConcertsCollection
+            concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>}/>
 
         </div>
       </Router>
