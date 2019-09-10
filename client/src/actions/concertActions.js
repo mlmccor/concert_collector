@@ -76,6 +76,7 @@ export function showConcert(id) {
       },
       redirect: "error"
     }).then(response => response.json()).then(concert => {
+      console.log(concert)
       return dispatch({type: 'SHOW_CONCERT', payload: concert})
     })
 
