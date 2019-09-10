@@ -36,7 +36,6 @@ class App extends Component {
 
         </div>
       </Router>
-      // TODO: fix artist relation to concerts
       // TODO: add more styles
       // TODO: fix columns for Artist Search page
     );

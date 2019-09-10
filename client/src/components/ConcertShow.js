@@ -4,9 +4,17 @@ class ConcertShow extends Component {
   constructor() {
     super()
     this.ticketDate = this.ticketDate.bind(this)
+    this.generateArtist = this.generateArtist.bind(this)
   }
   componentDidMount() {
     this.props.showConcert(this.props.match.params.id)
+
+  }
+
+  generateArtist() {
+    if (this.props.concertData.artist) {
+      return this.props.concertData.artist.name
+    }
   }
 
   ticketDate() {
@@ -23,6 +31,7 @@ class ConcertShow extends Component {
     let time = newDate.getHours() + ':' + newDate.getMinutes()
     return (
       <div>
+      <h4>Artist: {this.generateArtist()}</h4>
       <p>Date: {newDate.toDateString()}</p>
       <p>Time: {time + '0'}</p>
       <p>Venue: {this.props.concertData.venue_name}</p>
