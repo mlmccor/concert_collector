@@ -12,9 +12,18 @@ class CurrentArtist extends Component {
   render() {
     return (
       <div className='container'>
+
         <h2>Current Artist: {this.props.currentArtist.name}</h2>
-        <img src={this.props.currentArtist.image_url}/>
-        <ConcertList concerts={this.props.concerts} addConcert={this.props.add}/>
+        <div class='row'>
+          <div class='col-lg'>
+            <img class='img-fluid' src={this.props.currentArtist.image_url}/>
+          </div>
+          <div class='col-lg'>
+            <ConcertList
+              concerts={this.props.concerts}
+              addConcert={this.props.add}/>
+          </div>
+        </div>
       </div>
     )
   }

@@ -27,8 +27,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Link to='/app'>Home</Link>
-          <Link to='/concerts'>My Concerts</Link>
+        <ul class='nav'>
+          <li class='nav-item'>
+            <Link class='nav-link' to='/app'>Home</Link>
+          </li>
+          <li class='nav-item'>
+            <Link class='nav-link' to='/concerts'>My Concerts</Link>
+          </li>
+        </ul>
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
           <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
           <Route exact path='/concerts' render= {props => <ConcertsCollection

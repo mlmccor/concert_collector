@@ -22,7 +22,6 @@ module Api
         concert.venue_city = params[:venue][:city]
         concert.venue_region = params[:venue][:region]
         concert.venue_country = params[:venue][:country]
-        binding.pry
         if user_signed_in?
           current_user.concerts.push(concert)
           render json: concert, status: 201
