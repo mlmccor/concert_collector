@@ -13,7 +13,6 @@ module Api
         render json: artist
       end
       def fetch_concerts
-        binding.pry
         response = Faraday.get("https://rest.bandsintown.com/artists/#{params[:query]}/events?app_id=#{ENV['APP_ID']}")
         data = JSON.parse(response.body)
         render json: data

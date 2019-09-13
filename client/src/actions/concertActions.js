@@ -1,6 +1,7 @@
 export function getArtistConcerts(artistName) {
   return (dispatch => {
     dispatch({type: 'RETRIEVING_ARTIST_CONCERTS'});
+    let newArtistName = artistName.replace(/ /g, "%20");
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/fetch_concerts', {
       method: 'POST',
@@ -10,10 +11,9 @@ export function getArtistConcerts(artistName) {
         'X-CSRF-Token': token
       },
       redirect: "error",
-      body: JSON.stringify({query: artistName})
+      body: JSON.stringify({query: newArtistName})
     }).then(response => response.json())
       .then(concerts => {
-        debugger
         dispatch({type: 'ADD_ARTIST_CONCERTS', payload: concerts})
       })
   })
