@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'welcome/home'
   get '/app', to: 'welcome#app', as: 'app'
   get '/concerts/:id', to: 'welcome#app'
+  post '/api/v1/artists/search', to: 'api/v1/api#search_artist'
+  post '/api/v1/fetch_concerts', to: 'api/v1/api#fetch_concerts'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#home'
 end

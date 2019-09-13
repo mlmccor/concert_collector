@@ -1,9 +1,21 @@
 export function getArtistConcerts(artistName) {
-  let url = 'https://rest.bandsintown.com/artists/' + artistName + '/events?app_id=ecd2c12560633b6ddf83a6d2a823ebc7'
   return (dispatch => {
     dispatch({type: 'RETRIEVING_ARTIST_CONCERTS'});
-    return fetch(url).then(response => response.json())
-      .then(concerts => dispatch({type: 'ADD_ARTIST_CONCERTS', payload: concerts}))
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    return fetch('/api/v1/fetch_concerts', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error",
+      body: JSON.stringify({query: artistName})
+    }).then(response => response.json())
+      .then(concerts => {
+        debugger
+        dispatch({type: 'ADD_ARTIST_CONCERTS', payload: concerts})
+      })
   })
 }
 
