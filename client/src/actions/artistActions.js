@@ -2,7 +2,7 @@
 
 export function searchArtist(data) {
   return (dispatch) => {
-    let newData = data.replace(/ /g, "%20");
+    let newData = data.replace(/\W/g, '');
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/artists/search', {
       method: 'POST',

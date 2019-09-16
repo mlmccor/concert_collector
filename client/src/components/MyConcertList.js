@@ -3,7 +3,7 @@ import MyConcert from './MyConcert'
 
 const MyConcertList = ({concerts, removeConcert}) => {
   return (
-    <div id='currentArtistConcertList'>
+    <div class='container' id='currentArtistConcertList'>
       <ul>
       {concerts.map((concert) => {
         let newDate = new Date(concert.datetime)

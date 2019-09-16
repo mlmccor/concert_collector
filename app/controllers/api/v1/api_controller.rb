@@ -4,8 +4,7 @@ module Api
       def search_artist
         response = Faraday.get("https://rest.bandsintown.com/artists/#{params[:query]}?app_id=#{ENV['APP_ID']}")
         data = JSON.parse(response.body)
-        artist = Artist.new
-        artist.id = data['id']
+        artist = Artist.find_or_create_by(id: data['id'])
         artist.name = data['name']
         artist.image_url = data['image_url']
         current_user.artists.push(artist)

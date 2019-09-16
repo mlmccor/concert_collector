@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+#currentArtistConcertList {
+  position: relative;
+  height: 500px;
+  overflow-y:scroll;
+}
+
+#logout {
+  text-align: right;
+}

@@ -34,16 +34,17 @@ class App extends Component {
           <li class='nav-item'>
             <Link class='nav-link' to='/concerts'>My Concerts</Link>
           </li>
-        </ul>
+          </ul>
+          
+
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
           <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
           <Route exact path='/concerts' render= {props => <ConcertsCollection
             concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>}/>
+            <Route path='/users/sign_out'/>
 
         </div>
       </Router>
-      // TODO: add more styles
-      // TODO: fix columns for Artist Search page
     );
   }
 }

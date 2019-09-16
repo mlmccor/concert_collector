@@ -1,7 +1,7 @@
 export function getArtistConcerts(artistName) {
   return (dispatch => {
     dispatch({type: 'RETRIEVING_ARTIST_CONCERTS'});
-    let newArtistName = artistName.replace(/ /g, "%20");
+    let newArtistName = artistName.replace(/\W/g, '');
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/fetch_concerts', {
       method: 'POST',
@@ -33,6 +33,7 @@ export function addConcert(concert) {
       redirect: "error",
       body: JSON.stringify(concert)
     }).then(response => response.json()).then(concert => {
+      alert('Concert Added!')
       return dispatch({type: 'ADD_CONCERT', payload: concert})
     })
   })
@@ -70,6 +71,7 @@ export function removeConcert(id) {
       },
       redirect: "error"
     }).then(response => response.json()).then(concert => {
+      alert('Concert Removed!')
       return dispatch({type: 'DELETE_CONCERT', payload: concert})
     })
   }
