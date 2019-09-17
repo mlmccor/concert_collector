@@ -3,6 +3,13 @@ module Api
     class ConcertsController < ApplicationController
       def index
         if user_signed_in?
+          today = Date.today
+          current_user.concerts.each do |concert|
+            if today >= concert.datetime
+              concert.past_event = true
+            end
+          end
+
           render json: current_user.concerts
         else
           render json: {}, status: 201
@@ -22,6 +29,7 @@ module Api
         concert.venue_city = params[:venue][:city]
         concert.venue_region = params[:venue][:region]
         concert.venue_country = params[:venue][:country]
+        concert.past_event = false
         if user_signed_in?
           current_user.concerts.push(concert)
           render json: concert, status: 201
@@ -42,7 +50,7 @@ module Api
 
 
       def concert_params
-        params.require(:concert).permit(:on_sale_datetime, :datetime, :venue_name, :venue_country, :venue_region, :venue_city)
+        params.require(:concert).permit(:on_sale_datetime, :datetime, :venue_name, :venue_country, :venue_region, :venue_city, :past_event)
       end
     end
   end

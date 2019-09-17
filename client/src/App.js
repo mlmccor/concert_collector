@@ -35,11 +35,13 @@ class App extends Component {
             <Link class='nav-link' to='/concerts'>My Concerts</Link>
           </li>
           </ul>
-          
+
 
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
-          <Route path='/concerts/:id' render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
-          <Route exact path='/concerts' render= {props => <ConcertsCollection
+          <Route path='/concerts/:id'
+            render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
+          <Route exact path='/concerts'
+            render= {props => <ConcertsCollection
             concerts={this.props.concerts.myConcerts} getConcerts={this.props.getMyConcerts} removeConcert={this.props.removeConcert}/>}/>
             <Route path='/users/sign_out'/>
 
