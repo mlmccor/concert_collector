@@ -13,13 +13,11 @@ const MyConcertList = ({concerts, removeConcert}) => {
 
   return (
     <div class='container' id='currentArtistConcertList'>
-
     <h4>Upcoming Concerts</h4>
       <ul>
         {upcoming().map((concert) => {
           let newDate = new Date(concert.datetime)
           let time = newDate.getHours() + ':' + newDate.getMinutes()
-
           return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'}  removeConcert={removeConcert}/>
         })}
       </ul>
@@ -28,7 +26,6 @@ const MyConcertList = ({concerts, removeConcert}) => {
       {past().map((concert) => {
         let newDate = new Date(concert.datetime)
         let time = newDate.getHours() + ':' + newDate.getMinutes()
-
         return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'}  removeConcert={removeConcert}/>
       })}
       </ul>
