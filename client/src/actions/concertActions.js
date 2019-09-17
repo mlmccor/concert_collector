@@ -33,7 +33,7 @@ export function addConcert(concert) {
       redirect: "error",
       body: JSON.stringify(concert)
     }).then(response => response.json()).then(concert => {
-      alert('Concert Added!')
+      dispatch({type: 'ADD_SUCCESS'})
       return dispatch({type: 'ADD_CONCERT', payload: concert})
     })
   })
@@ -94,4 +94,8 @@ export function showConcert(id) {
     })
 
   }
+}
+
+export function removeAlert() {
+  return (dispatch) => dispatch({type: 'REMOVE_ALERT'})
 }

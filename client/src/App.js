@@ -8,24 +8,36 @@ import Home from './containers/Home'
 import MyConcert from './components/MyConcert'
 import ConcertShow from './components/ConcertShow'
 import ConcertsCollection from './containers/ConcertsCollection'
+import Success from './components/Success'
 
 
 
 import { searchArtist, fetchMyArtists, selectArtist } from './actions/artistActions'
-import {getArtistConcerts, addConcert, getMyConcerts, removeConcert, showConcert} from './actions/concertActions'
+import {getArtistConcerts, addConcert, getMyConcerts, removeConcert, showConcert, removeAlert} from './actions/concertActions'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.errors = this.errors.bind(this)
+  }
 
   componentDidMount() {
     this.props.getMyArtists()
     this.props.getMyConcerts()
   }
 
+  errors() {
+    if (this.props.concerts.success) {
+      return <Success removeAlert= {this.props.removeAlert}/>
+    }
+  }
 
 
   render() {
     return (
       <Router>
+        {this.errors()}
         <div className="App">
         <ul class='nav'>
           <li class='nav-item'>
@@ -35,6 +47,7 @@ class App extends Component {
             <Link class='nav-link' to='/concerts'>My Concerts</Link>
           </li>
           </ul>
+
 
 
           <Route exact path='/app' render= {props => <Home {...this.props} />}/>
@@ -63,7 +76,8 @@ const mapDispatchToProps = dispatch => ({
   addConcert: (concert) => dispatch(addConcert(concert)),
   getMyConcerts: () => dispatch(getMyConcerts()),
   removeConcert: (id) => dispatch(removeConcert(id)),
-  showConcert: (id) => dispatch(showConcert(id))
+  showConcert: (id) => dispatch(showConcert(id)),
+  removeAlert: () => dispatch(removeAlert())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
