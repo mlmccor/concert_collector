@@ -1,4 +1,4 @@
-export default (state = {artistConcerts: [], myConcerts: [], concertData: {}, success: false}, action ) => {
+export default (state = {artistConcerts: [], myConcerts: [], concertData: {}, success: false, failure: false, message: ''}, action ) => {
   switch(action.type) {
     case 'RETRIEVING_ARTIST_CONCERTS':
       return state
@@ -16,10 +16,6 @@ export default (state = {artistConcerts: [], myConcerts: [], concertData: {}, su
       })}
     case 'SHOW_CONCERT':
       return {...state, concertData: action.payload}
-    case 'ADD_SUCCESS':
-      return {...state, success: true}
-    case 'REMOVE_ALERT':
-      return {...state, success: false}
     default:
       return state
   }

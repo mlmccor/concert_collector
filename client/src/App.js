@@ -28,8 +28,8 @@ class App extends Component {
   }
 
   errors() {
-    if (this.props.concerts.success) {
-      return <Success removeAlert= {this.props.removeAlert}/>
+    if (this.props.messages.success) {
+      return <Success removeAlert= {this.props.removeAlert} message={this.props.messages.message}/>
     }
   }
 

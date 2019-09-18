@@ -71,7 +71,7 @@ export function removeConcert(id) {
       },
       redirect: "error"
     }).then(response => response.json()).then(concert => {
-      alert('Concert Removed!')
+      dispatch({type: 'REMOVE_SUCCESS'})
       return dispatch({type: 'DELETE_CONCERT', payload: concert})
     })
   }
