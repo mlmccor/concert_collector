@@ -13,7 +13,7 @@ class Home extends Component {
       <div className='home'>
         <SearchBar
           getArtist={this.props.getArtist}/>
-
+        <br/>
         <CurrentArtist
           currentArtist={this.props.artists.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.concerts.artistConcerts} add={this.props.addConcert}/>
 

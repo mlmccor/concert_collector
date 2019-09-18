@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/home'
   get '/app', to: 'welcome#app', as: 'app'
+  get '/concerts', to: 'welcome#app'
   get '/concerts/:id', to: 'welcome#app'
   post '/api/v1/artists/search', to: 'api/v1/api#search_artist'
   post '/api/v1/fetch_concerts', to: 'api/v1/api#fetch_concerts'

@@ -39,7 +39,7 @@ class App extends Component {
       <Router>
         {this.errors()}
         <div className="App">
-        <ul class='nav'>
+        <ul class='nav bg-dark'>
           <li class='nav-item'>
             <Link class='nav-link' to='/app'>Home</Link>
           </li>
@@ -50,6 +50,7 @@ class App extends Component {
           <a href='/users/sign_out' data-method='delete' class='nav-link'>Logout</a>
           </li>
           </ul>
+          <br/>
 
 
 
