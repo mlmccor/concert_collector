@@ -46,6 +46,9 @@ class App extends Component {
           <li class='nav-item'>
             <Link class='nav-link' to='/concerts'>My Concerts</Link>
           </li>
+          <li>
+          <a href='/users/sign_out' data-method='delete' class='nav-link'>Logout</a>
+          </li>
           </ul>
 
 
