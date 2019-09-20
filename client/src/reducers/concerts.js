@@ -1,9 +1,6 @@
-export default (state = {artistConcerts: [], myConcerts: [], concertData: {}, success: false, failure: false, message: ''}, action ) => {
+export default (state = {myConcerts: [], concertData: {}}, action ) => {
   switch(action.type) {
-    case 'RETRIEVING_ARTIST_CONCERTS':
-      return state
-    case 'ADD_ARTIST_CONCERTS':
-      return {...state, artistConcerts: action.payload}
+
     case 'ADD_CONCERT':
       return {...state, myConcerts: [...state.myConcerts, action.payload]}
     case 'RETREIVING_MY_CONCERTS':

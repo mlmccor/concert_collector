@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getMyArtists()
     this.props.getMyConcerts()
   }
 
@@ -54,7 +53,7 @@ class App extends Component {
 
 
 
-          <Route exact path='/app' render= {props => <Home {...this.props} />}/>
+          <Route exact path='/app' render= {props => <Home />}/>
           <Route path='/concerts/:id'
             render= {props => <ConcertShow {...props} showConcert={this.props.showConcert} concertData={this.props.concerts.concertData} />}/>
           <Route exact path='/concerts'
@@ -73,11 +72,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getArtist: (data) => dispatch(searchArtist(data)),
-  getMyArtists: () => dispatch(fetchMyArtists()),
-  selectArtist: (id) => dispatch(selectArtist(id)),
-  getConcerts: (name) => dispatch(getArtistConcerts(name)),
-  addConcert: (concert) => dispatch(addConcert(concert)),
   getMyConcerts: () => dispatch(getMyConcerts()),
   removeConcert: (id) => dispatch(removeConcert(id)),
   showConcert: (id) => dispatch(showConcert(id)),

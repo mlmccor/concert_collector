@@ -2,8 +2,11 @@ module Api
   module V1
     class ArtistsController < ApplicationController
       def index
-        render json: Artist.all, status: 201
+        if user_signed_in?
+          render json: current_user.artists.uniq, status: 201
+        end
       end
+
       def show
         artist = Artist.find(params[:id])
         if artist

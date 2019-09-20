@@ -9,7 +9,6 @@ module Api
               concert.past_event = true
             end
           end
-
           render json: current_user.concerts
         else
           render json: {}, status: 201
