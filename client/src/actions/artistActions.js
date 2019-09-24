@@ -98,3 +98,22 @@ export function selectArtist(id) {
     })
   }
 }
+
+export function deleteArtist(id) {
+  return (dispatch) => {
+    let token = document.querySelector('meta[name="csrf-token"]').content
+    let url = '/api/v1/artists/' + id
+    return fetch(url, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error"
+    })
+    .then(resp => resp.json()).then(artist => {
+      return dispatch({type:'REMOVE_ARTIST', payload: artist})
+    })
+  }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import {searchArtist, selectArtist, getArtistConcerts, addConcert, fetchMyArtists} from '../actions/artistActions'
+import {searchArtist, selectArtist, getArtistConcerts, addConcert, fetchMyArtists, deleteArtist} from '../actions/artistActions'
 
 import SearchBar from '../components/SearchBar'
 import CurrentArtist from './CurrentArtist'
@@ -16,15 +16,21 @@ class Home extends Component {
   }
 
   render() {
+    let blah
+    if (this.props.currentArtist.name) {
+      blah = <CurrentArtist
+        currentArtist={this.props.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.artistConcerts}
+        add={this.props.addConcert}
+        deleteArtist={this.props.deleteArtist}/>
+    }
     return (
       <div className='home'>
         <SearchBar
           getArtist={this.props.getArtist}/>
         <br/>
-        <CurrentArtist
-          currentArtist={this.props.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.artistConcerts}
-          add={this.props.addConcert}/>
 
+        {blah}
+        <br/>
         <ArtistsCollection
           artistList={this.props.myArtists} selectArtist={this.props.selectArtist}/>
       </div>
@@ -39,6 +45,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   getArtist: (data) => dispatch(searchArtist(data)),
   selectArtist: (id) => dispatch(selectArtist(id)),
+  deleteArtist: (id) => dispatch(deleteArtist(id)),
   getConcerts: (name) => dispatch(getArtistConcerts(name)),
   getMyArtists: () => dispatch(fetchMyArtists()),
   addConcert: (concert) => dispatch(addConcert(concert))

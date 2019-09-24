@@ -21,7 +21,7 @@ module Api
       end
 
       def create
-        concert = Concert.new(concert_params)
+        concert = Concert.find_or_create_by(concert_params)
         artist = Artist.find(params[:artist_id])
         concert.artist = artist
         concert.venue_name = params[:venue][:name]
@@ -37,7 +37,9 @@ module Api
 
       def destroy
         concert = Concert.find(params[:id])
-        concert.destroy
+        if user_signed_in?
+          current_user.concerts.delete(concert)
+        end
         render json: concert, status: 201
       end
 

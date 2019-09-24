@@ -14,9 +14,17 @@ module Api
         end
       end
       def create
-        @artist = Artist.create(artist_params)
+        @artist = Artist.find_or_create_by(artist_params)
         current_user.artists.push(@artist)
         render json: @artist, status:201
+      end
+
+      def destroy
+        artist = Artist.find(params[:id])
+        if user_signed_in?
+          current_user.artists.delete(artist)
+        end
+        render json: artist, status: 201
       end
 
 

@@ -38,17 +38,19 @@ class App extends Component {
       <Router>
         {this.errors()}
         <div className="App">
-        <ul class='nav bg-dark'>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/app'>Home</Link>
-          </li>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/concerts'>My Concerts</Link>
-          </li>
-          <li>
-          <a href='/users/sign_out' data-method='delete' class='nav-link'>Logout</a>
-          </li>
+        <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
+          <ul className='nav'>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/app'>Home</Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/concerts'>My Concerts</Link>
+            </li>
+            <li>
+              <a href='/users/sign_out' data-method='delete' className='nav-link'>Logout</a>
+            </li>
           </ul>
+        </nav>
           <br/>
 
 
