@@ -17,7 +17,7 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(
   applyMiddleware(thunk),
-  // other store enhancers if any
+  // any other store enhancers if any
 );
 
 
