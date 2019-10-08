@@ -6,13 +6,15 @@ import ConcertShow from './ConcertShow'
 const MyConcert = ({date, concert, removeConcert}) => {
   let url = '/concerts/' + concert.id
   return (
-    <li id='concert'>
-    <Link to={url}>{date}<br/>
-      {concert.venue_city}, {concert.venue_region},
-      {concert.venue_country}</Link>
-      <DeleteButton deleteConcert={removeConcert} concertId={concert.id}/>
-      <br/><br/>
-    </li>
+    <div className='card'>
+      <div className='card-body'>
+        <p className='card-title'>{date}</p>
+        <p className='card-text'>{concert.venue_city}, {concert.venue_region},
+        {concert.venue_country}</p>
+        <Link className='card-link' to={url}>More Info</Link>
+        <DeleteButton deleteConcert={removeConcert} concertId={concert.id}/>
+        </div>
+    </div>
   )
 }
 
