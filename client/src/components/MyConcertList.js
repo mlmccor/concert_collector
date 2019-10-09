@@ -12,7 +12,7 @@ const MyConcertList = ({concerts, removeConcert}) => {
   }
 
   return (
-    <div class='container' id='currentArtistConcertList'>
+    <div class='container border border-dark' id='currentArtistConcertList'>
     <h4>Upcoming Concerts</h4>
       <ul>
         {upcoming().map((concert) => {

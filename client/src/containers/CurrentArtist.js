@@ -19,7 +19,7 @@ class CurrentArtist extends Component {
       <div className='container'>
 
         <h2>{this.props.currentArtist.name}</h2><DeleteArtist id={this.props.currentArtist.id} deleteArtist={this.props.deleteArtist}/>
-
+        <br/><br/>
         <div className='row'>
           <div className='col-lg'>
             <img className='img-fluid' src={this.props.currentArtist.image_url}/>
