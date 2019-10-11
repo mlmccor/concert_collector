@@ -46,3 +46,7 @@
   max-width: 100%;
   height: auto;
 }
+
+.artist-card {
+  width: 8rem;
+}
