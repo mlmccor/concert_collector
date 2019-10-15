@@ -31,12 +31,13 @@ class ConcertShow extends Component {
     let time = newDate.getHours() + ':' + newDate.getMinutes()
     return (
       <div>
-      <h4>Artist: {this.generateArtist()}</h4>
-      <p>Date: {newDate.toDateString()}</p>
-      <p>Time: {time + '0'}</p>
-      <p>Venue: {this.props.concertData.venue_name}</p>
-      <p>{this.props.concertData.venue_city}, {this.props.concertData.venue_region} {this.props.concertData.venue_country}</p>
-      <p>Tickets Go On Sale: {this.ticketDate()}</p>
+        <h4>Artist: {this.generateArtist()}</h4>
+        <p>Date: {newDate.toDateString()}</p>
+        <p>Time: {time + '0'}</p>
+        <p>Venue: {this.props.concertData.venue_name}</p>
+        <p>{this.props.concertData.venue_city},
+             {this.props.concertData.venue_region} {this.props.concertData.venue_country}</p>
+        <p>Tickets Go On Sale: {this.ticketDate()}</p>
       </div>
     )
   }

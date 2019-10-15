@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {this.errors()}
         <div className="App">
         <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
           <ul className='nav'>
@@ -51,6 +50,7 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+        {this.errors()}
           <br/>
 
 
