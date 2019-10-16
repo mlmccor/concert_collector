@@ -32,11 +32,6 @@
   }
 }
 
-#currentArtistConcertList {
-  position: relative;
-  height: 535px;
-  overflow-y:scroll;
-}
 
 .card {
   background-color: snow;
