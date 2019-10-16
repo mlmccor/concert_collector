@@ -16,13 +16,13 @@ class CurrentArtist extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div class='container'>
 
         <h2>{this.props.currentArtist.name}</h2><DeleteArtist id={this.props.currentArtist.id} deleteArtist={this.props.deleteArtist}/>
         <br/><br/>
-        <div className='row'>
-          <div className='col-lg'>
-            <img className='img-fluid' src={this.props.currentArtist.image_url}/>
+        <div class='row'>
+          <div class='col-lg'>
+            <img class='img-fluid' src={this.props.currentArtist.image_url}/>
           </div>
           <div className='col-lg'>
             <ConcertList
