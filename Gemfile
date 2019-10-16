@@ -45,7 +45,6 @@ gem 'pry-rails'
 
 gem 'active_model_serializers'
 
-gem 'pg'
 
 
 gem 'dotenv-rails', groups: [:development, :test]
@@ -68,6 +67,7 @@ end
 
 group :production do
   # Use postgres as the database for production
+  gem 'pg'
 end
 
 group :test do
