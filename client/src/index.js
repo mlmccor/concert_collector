@@ -8,21 +8,21 @@ import thunk from 'redux-thunk'
 
 import { createStore, applyMiddleware } from 'redux';
 
-const composeEnhancers =
-  typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+// const composeEnhancers =
+//   typeof window === 'object' &&
+//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose;
+    // }) : compose;
 
-const enhancer = composeEnhancers(
-  applyMiddleware(thunk),
+// const enhancer = composeEnhancers(
+//   applyMiddleware(thunk),
   // any other store enhancers if any
-);
+// );
 
 
 const store = createStore(
-  rootReducer,enhancer
+  rootReducer,applyMiddleware(thunk)
 );
 
 
