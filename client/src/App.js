@@ -9,6 +9,7 @@ import MyConcert from './components/MyConcert'
 import ConcertShow from './components/ConcertShow'
 import ConcertsCollection from './containers/ConcertsCollection'
 import Success from './components/Success'
+import Failure from './components/Failure'
 
 
 
@@ -29,6 +30,8 @@ class App extends Component {
   errors() {
     if (this.props.messages.success) {
       return <Success removeAlert= {this.props.removeAlert} message={this.props.messages.message}/>
+    } else if (this.props.messages.failure) {
+      return <Failure removeAlert= {this.props.removeAlert} message={this.props.messages.message}/>
     }
   }
 

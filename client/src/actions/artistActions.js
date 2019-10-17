@@ -15,8 +15,12 @@ export function searchArtist(data) {
       body: JSON.stringify({query: newData})
     })
     .then(resp => resp.json()).then(artist => {
-      return dispatch({type: 'ADD_ARTIST', payload: artist});
-    })
+      if (artist.error) {
+        return dispatch({type: 'NO_ARTIST'})
+      } else {
+        return dispatch({type: 'ADD_ARTIST', payload: artist});
+      }
+    }).catch(error => dispatch({type: 'NO_ARTIST'}))
   }
 }
 
