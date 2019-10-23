@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 
-* Installation
+#Installation
 
 After cloning the repo to your local device, run the following commands in the root folder:
 
