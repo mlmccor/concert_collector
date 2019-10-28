@@ -46,5 +46,6 @@ Special thanks for <a href="https://github.com/dakotalmartinez/rails-react-devis
 
 # License
 
+MIT © mlmccor
 
 
