@@ -1,6 +1,20 @@
 # Concert Collector
+A web app that quickly allows a user to search the confirmed concert dates for their favorite artists and musical groups. Searched concerts can be collected for calendar input, and searched artists are collected for quick searching of future concert dates.
 
+# Frameworks used
 
+I built the front-end using the React Javascript Framework and Redux for state management.
+
+The back-end is an API built using Ruby on Rails.
+
+Ruby Gems used:
+
+* Webpacker
+* Devise
+* Faraday
+* Active Model Serializers
+
+Used PostGresql for Production database
 
 # Live Site
 
@@ -22,6 +36,15 @@ rails s
 
 then travel to localhost:3000 (depending on what port you set it to) in a browser window
 
-# More Info
+# API Reference
+
+I used the Bandsintown API for artist and concert data. Documentation for that can be found <a href="https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0">here.</a>
+
+# Credits
+
+Special thanks for <a href="https://github.com/dakotalmartinez/rails-react-devise-tutorial">this guide</a> for setting up the Devise gem.
+
+# License
+
 
 
