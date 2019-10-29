@@ -20,6 +20,10 @@ Used PostGresql for Production database
 
 This app is deployed on Heroku <a href="concert-collection.herokuapp.com">here</a>
 
+# Video Demo
+
+Here is walkthrough <a href="https://youtu.be/zmf3_vcye-g">video</a> for the app
+
 # Installation
 
 After cloning the repo to your local device, run the following commands in the root folder:
