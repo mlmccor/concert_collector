@@ -16,7 +16,11 @@ const MyConcertList = ({concerts, removeConcert}) => {
     <h4>Upcoming Concerts</h4>
       <ul>
         {upcoming().map((concert) => {
-          let newDate = new Date(concert.datetime)
+          let improvedDate = concert.datetime
+          if (concert.datetime) {
+            improvedDate = concert.datetime.substring(0, concert.datetime.length - 1)
+          }
+          let newDate = new Date(improvedDate)
           let time = newDate.getHours() + ':' + newDate.getMinutes()
           return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'}  removeConcert={removeConcert}/>
         })}

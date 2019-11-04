@@ -59,6 +59,7 @@ export function addConcert(concert) {
       redirect: "error",
       body: JSON.stringify(concert)
     }).then(response => response.json()).then(concert => {
+      debugger
       dispatch({type: 'ADD_SUCCESS'})
       return dispatch({type: 'ADD_CONCERT', payload: concert})
     })

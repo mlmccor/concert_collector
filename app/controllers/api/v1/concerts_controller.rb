@@ -22,6 +22,7 @@ module Api
 
       def create
         concert = Concert.find_or_create_by(concert_params)
+        binding.pry
         artist = Artist.find(params[:artist_id])
         concert.artist = artist
         concert.venue_name = params[:venue][:name]

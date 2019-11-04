@@ -27,7 +27,12 @@ class ConcertShow extends Component {
   }
 
   render() {
-    let newDate = new Date(this.props.concertData.datetime)
+    let realDate
+    if (this.props.concertData.datetime) {
+      realDate = this.props.concertData.datetime.substring(0, this.props.concertData.datetime.length - 1)
+
+    }
+    let newDate = new Date(realDate)
     let time = newDate.getHours() + ':' + newDate.getMinutes()
     return (
       <div>
