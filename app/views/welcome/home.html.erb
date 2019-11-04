@@ -1,3 +1,5 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 <nav style="text-align: right">
 <% if user_signed_in? %>
     <%= link_to('Logout', destroy_user_session_path, method: :delete) %>

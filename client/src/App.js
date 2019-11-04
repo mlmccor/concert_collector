@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
+        <nav class='navbar navbar-expand-lg navbar-light bg-dark sticky-top'>
           <ul className='nav'>
             <li className='nav-item'>
               <Link className='nav-link' to='/app'>Home</Link>
