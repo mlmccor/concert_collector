@@ -1,46 +1,55 @@
-# README
+# Concert Collector
+A web app that quickly allows a user to search the confirmed concert dates for their favorite artists and musical groups. Searched concerts can be collected for calendar input, and searched artists are collected for quick searching of future concert dates.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Frameworks used
 
-Things you may want to cover:
+I built the front-end using the React Javascript Framework and Redux for state management.
 
-* Ruby version
+The back-end is an API built using Ruby on Rails.
 
-* System dependencies
+Ruby Gems used:
 
-* Configuration
+* Webpacker
+* Devise
+* Faraday
+* Active Model Serializers
 
-* Database creation
+Used PostGresql for Production database
 
-* Database initialization
+# Live Site
 
-* How to run the test suite
+This app is deployed on Heroku <a href="concert-collection.herokuapp.com">here</a>
 
-* Services (job queues, cache servers, search engines, etc.)
+# Video Demo
 
-* Deployment instructions
+Here is walkthrough <a href="https://youtu.be/zmf3_vcye-g">video</a> for the app
 
-* ...
+# Installation
 
-response = RestClient::Request.execute(
-        method: "GET",
-        url: "https://api.nasa.gov/planetary/apod?api_key=" + ENV["api_key"]
-    )   
-    @results = JSON.parse(response.body)
+After cloning the repo to your local device, run the following commands in the root folder:
 
-   @todays_astronomy_picture = AstronomyPicture.create do |astro|
-      astro["copyright"] = @results["copyright"]
-      astro["date"] = @results["date"]
-      astro["explanation"] = @results["explanation"]
-      astro["hdurl"] = @results["hdurl"]
-      astro["media_type"] = @results["media_type"]
-      astro["service_version"] = @results["service_version"]
-      astro["title"] = @results["title"]
-      astro["url"] = @results["url"]
-    end
+bundle install
+yarn install
+rake db:migrate
 
-    render json: @todays_astronomy_picture
+To run the app, have two terminals running in the root folder and enter the following commands:
 
-    gem 'rest-client', '~> 2.1.0'
-gem 'json', '~> 2.2.0'
+./bin/webpack-dev-server
+
+rails s
+
+then travel to localhost:3000 (depending on what port you set it to) in a browser window
+
+# API Reference
+
+I used the Bandsintown API for artist and concert data. Documentation for that can be found <a href="https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0">here.</a>
+
+# Credits
+
+Special thanks for <a href="https://github.com/dakotalmartinez/rails-react-devise-tutorial">this guide</a> for setting up the Devise gem.
+
+# License
+
+MIT © mlmccor
+
+
