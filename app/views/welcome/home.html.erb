@@ -9,4 +9,8 @@
   <% end %>
 </nav>
 <h1>Welcome to the Concert Collector</h1>
-<p>If you're logged in, check out <%= link_to "the app", app_path %>!</p>
+<% if user_signed_in? %>
+<p>Click Here to check out <%= link_to "the app", app_path %>!</p>
+<% else %>
+  <p>If you're a new user, please Sign Up on the right, otherwise, Login into an existing account to access the app</p>
+<% end %>
