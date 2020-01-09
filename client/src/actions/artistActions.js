@@ -2,7 +2,7 @@
 
 export function searchArtist(data) {
   return (dispatch) => {
-    let newData = data.replace(/\W/g, '');
+    let newData = data.replace(/\W/g, '*');
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/artists/search', {
       method: 'POST',
@@ -15,6 +15,7 @@ export function searchArtist(data) {
       body: JSON.stringify({query: newData})
     })
     .then(resp => resp.json()).then(artist => {
+      console.log(artist)
       if (artist.error) {
         return dispatch({type: 'NO_ARTIST'})
       } else {
