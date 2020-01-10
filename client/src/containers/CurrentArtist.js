@@ -22,7 +22,7 @@ class CurrentArtist extends Component {
         <br/><br/>
         <div class='row'>
           <div class='col-lg'>
-            <img class='img-fluid' src={this.props.currentArtist.image_url}/>
+            <img class='img' src={this.props.currentArtist.image_url}/>
           </div>
           <div className='col-lg'>
             <ConcertList

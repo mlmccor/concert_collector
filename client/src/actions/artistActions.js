@@ -41,7 +41,8 @@ export function getArtistConcerts(artistId) {
     }).then(response => response.json())
       .then(calendarObject => {
         debugger
-        dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
+
+        return dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
       })
   })
 }
@@ -85,21 +86,25 @@ export function fetchMyArtists() {
   }
 }
 
-export function selectArtist(id) {
+export function selectArtist(id, name) {
+  let image_url = `https://images.sk-static.com/images/media/profile_images/artists/${id}/huge_avatar`
+  console.log(id, name)
   return (dispatch) => {
     dispatch({type: 'FINDING_ARTIST'});
     let token = document.querySelector('meta[name="csrf-token"]').content
-    let url = '/api/v1/artists/' + id
+    let url = '/api/v1/artists/'
     return fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         "Content-Type": "application/json",
         'X-Requested-With': 'XMLHttpRequest',
         'X-CSRF-Token': token
       },
-      redirect: "error"
+      redirect: "error",
+      body: JSON.stringify({id: id, name: name, image_url: image_url})
     })
     .then(resp => resp.json()).then(artist => {
+      debugger
       return dispatch({type:'SELECT_ARTIST', payload: artist})
     })
   }

@@ -19,7 +19,7 @@ class Home extends Component {
 
   searching() {
     if (this.props.searching) {
-      return <SearchResults results={this.props.searchResults} getConcerts={this.props.getConcerts}/>
+      return <SearchResults results={this.props.searchResults} selectArtist={this.props.selectArtist}/>
     }
   }
 
@@ -41,8 +41,7 @@ class Home extends Component {
 
         {blah}
         <br/>
-        <ArtistsCollection
-          artistList={this.props.myArtists} selectArtist={this.props.selectArtist}/>
+
       </div>
     )
   }
@@ -54,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getArtist: (data) => dispatch(searchArtist(data)),
-  selectArtist: (id) => dispatch(selectArtist(id)),
+  selectArtist: (id, name) => dispatch(selectArtist(id, name)),
   deleteArtist: (id) => dispatch(deleteArtist(id)),
   getConcerts: (id) => dispatch(getArtistConcerts(id)),
   getMyArtists: () => dispatch(fetchMyArtists()),

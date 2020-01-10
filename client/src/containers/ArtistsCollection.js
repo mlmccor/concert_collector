@@ -9,7 +9,7 @@ const ArtistsCollection = ({artistList, selectArtist}) => {
         {artistList.map((artist) => {
           return (
             <div className='card artist-card' >
-              <img className='card-img-top' src={artist.image_url} id={artist.id} onClick={(e) => selectArtist(e.target.id)}/>
+              <img className='card-img-top' src={artist.image_url} id={artist.id} onClick={(e) => selectArtist(e.target.id, e.target.displayName)}/>
             </div>
           )
         })}
