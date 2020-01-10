@@ -1,4 +1,4 @@
-export default (state = {currentArtist: {}, myArtists: [], artistConcerts: []}, action) => {
+export default (state = {currentArtist: {}, myArtists: [], artistConcerts: [], searchResults: [], searching: false}, action) => {
   switch(action.type) {
     case 'LOADING_ARTIST':
       return state
@@ -10,6 +10,8 @@ export default (state = {currentArtist: {}, myArtists: [], artistConcerts: []}, 
       return {...state, artistConcerts: action.payload}
     case 'RETRIEVE_ARTISTS':
       return {...state, myArtists: action.payload}
+    case 'DISPLAY_SEARCH_RESULTS':
+      return {...state, searchResults: action.payload, searching: true}
     case 'FINDING_ARTIST':
       return state
     case 'SELECT_ARTIST':

@@ -14,12 +14,12 @@ export function searchArtist(data) {
       redirect: "error",
       body: JSON.stringify({query: newData})
     })
-    .then(resp => resp.json()).then(artist => {
-      console.log(artist)
-      if (artist.error) {
+    .then(resp => resp.json()).then(results => {
+      console.log(results)
+      if (results.data) {
         return dispatch({type: 'NO_ARTIST'})
       } else {
-        return dispatch({type: 'ADD_ARTIST', payload: artist});
+        return dispatch({type: 'DISPLAY_SEARCH_RESULTS', payload: results});
       }
     }).catch(error => dispatch({type: 'NO_ARTIST'}))
   }

@@ -10,6 +10,7 @@ import ConcertShow from './components/ConcertShow'
 import ConcertsCollection from './containers/ConcertsCollection'
 import Success from './components/Success'
 import Failure from './components/Failure'
+import SearchResults from './components/SearchResults'
 
 
 
@@ -35,6 +36,12 @@ class App extends Component {
     }
   }
 
+  searching() {
+    if (this.props.artists.searching) {
+      return <SearchResults results={this.props.artists.searchResults}/>
+    }
+  }
+
 
   render() {
     return (
@@ -54,6 +61,7 @@ class App extends Component {
           </ul>
         </nav>
         {this.errors()}
+        {this.searching()}
           <br/>
 
 
