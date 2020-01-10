@@ -22,7 +22,7 @@ module Api
 
       end
       def fetch_concerts
-        response = Faraday.get("https://rest.bandsintown.com/artists/#{params[:query]}/events?app_id=#{ENV['APP_ID']}")
+        response = Faraday.get("https://api.songkick.com/api/3.0/artists/#{params[:id]}/calendar.json?apikey=#{ENV['APP_ID']}")
         data = JSON.parse(response.body)
         render json: data
       end

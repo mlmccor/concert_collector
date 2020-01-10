@@ -5,7 +5,7 @@ export default (state = {currentArtist: {}, myArtists: [], artistConcerts: [], s
     case 'ADD_ARTIST':
       return {...state, currentArtist: action.payload, myArtists: [...state.myArtists, action.payload]}
     case 'RETRIEVING_ARTIST_CONCERTS':
-      return state
+      return {...state, searching: false}
     case 'ADD_ARTIST_CONCERTS':
       return {...state, artistConcerts: action.payload}
     case 'RETRIEVE_ARTISTS':

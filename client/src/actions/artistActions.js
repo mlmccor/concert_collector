@@ -25,10 +25,9 @@ export function searchArtist(data) {
   }
 }
 
-export function getArtistConcerts(artistName) {
+export function getArtistConcerts(artistId) {
   return (dispatch => {
     dispatch({type: 'RETRIEVING_ARTIST_CONCERTS'});
-    let newArtistName = artistName.replace(/\W/g, '');
     let token = document.querySelector('meta[name="csrf-token"]').content;
     return fetch('/api/v1/fetch_concerts', {
       method: 'POST',
@@ -38,10 +37,11 @@ export function getArtistConcerts(artistName) {
         'X-CSRF-Token': token
       },
       redirect: "error",
-      body: JSON.stringify({query: newArtistName})
+      body: JSON.stringify({id: artistId})
     }).then(response => response.json())
-      .then(concerts => {
-        dispatch({type: 'ADD_ARTIST_CONCERTS', payload: concerts})
+      .then(calendarObject => {
+        debugger
+        dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
       })
   })
 }

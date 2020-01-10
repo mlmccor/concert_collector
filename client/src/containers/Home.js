@@ -9,11 +9,20 @@ import ArtistsCollection from './ArtistsCollection'
 import ConcertsCollection from './ConcertsCollection'
 import MyConcertList from '../components/MyConcertList'
 import MyConcert from '../components/MyConcert'
+import SearchResults from '../components/SearchResults'
+
 
 class Home extends Component {
   componentDidMount() {
     this.props.getMyArtists()
   }
+
+  searching() {
+    if (this.props.searching) {
+      return <SearchResults results={this.props.searchResults} getConcerts={this.props.getConcerts}/>
+    }
+  }
+
 
   render() {
     let blah
@@ -28,6 +37,7 @@ class Home extends Component {
         <SearchBar
           getArtist={this.props.getArtist}/>
         <br/>
+        {this.searching()}
 
         {blah}
         <br/>
@@ -46,7 +56,7 @@ const mapDispatchToProps = (dispatch) => ({
   getArtist: (data) => dispatch(searchArtist(data)),
   selectArtist: (id) => dispatch(selectArtist(id)),
   deleteArtist: (id) => dispatch(deleteArtist(id)),
-  getConcerts: (name) => dispatch(getArtistConcerts(name)),
+  getConcerts: (id) => dispatch(getArtistConcerts(id)),
   getMyArtists: () => dispatch(fetchMyArtists()),
   addConcert: (concert) => dispatch(addConcert(concert))
 })
