@@ -14,7 +14,6 @@ module Api
         end
       end
       def create
-        binding.pry
         @artist = Artist.find_or_create_by(artist_params)
         current_user.artists.push(@artist)
         render json: @artist, status:201

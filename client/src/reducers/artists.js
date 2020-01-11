@@ -3,7 +3,7 @@ export default (state = {currentArtist: {}, myArtists: [], artistConcerts: [], s
     case 'LOADING_ARTIST':
       return state
     case 'ADD_ARTIST':
-      return {...state, currentArtist: action.payload, myArtists: [...state.myArtists, action.payload]}
+      return {...state, currentArtist: action.payload, myArtists: [...state.myArtists, action.payload], searchResults: [], searching: false}
     case 'RETRIEVING_ARTIST_CONCERTS':
       return {...state, searching: false}
     case 'ADD_ARTIST_CONCERTS':
@@ -15,7 +15,7 @@ export default (state = {currentArtist: {}, myArtists: [], artistConcerts: [], s
     case 'FINDING_ARTIST':
       return state
     case 'SELECT_ARTIST':
-      return {...state, currentArtist: action.payload}
+      return {...state, currentArtist: action.payload, myArtists: [...state.myArtists, action.payload], searchResults: [], searching: false}
     case 'REMOVE_ARTIST':
       return {...state, currentArtist: {}, myArtists: [...state.myArtists.filter(artist => artist.id !== action.payload.id)]}
     default:

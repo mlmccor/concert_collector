@@ -9,7 +9,7 @@ const Concert = ({date, concert, addConcert}) => {
       <div className='card-body'>
         <p className='card-title' id='concert'>{date}</p>
         <p className='card-text'>
-        {concert.venue.city}, {concert.venue.region}, {concert.venue.country}
+        {concert.venue.metroArea.displayName}, {concert.venue.metroArea.state ? concert.venue.metroArea.state.displayName : false}, {concert.venue.metroArea.country.displayName}
         </p>
         <AddButton addConcert={addConcert} concert={concert}/><br/><br/>
 

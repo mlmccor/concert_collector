@@ -5,7 +5,7 @@ import DeleteArtist from '../components/DeleteArtist'
 class CurrentArtist extends Component {
 
   componentDidMount() {
-    this.props.getConcerts(this.props.currentArtist.name)
+    this.props.getConcerts(this.props.currentArtist.id)
   }
 
   componentDidUpdate(prevProps) {
@@ -14,20 +14,25 @@ class CurrentArtist extends Component {
     }
   }
 
+
+
   render() {
+    let view
+
     return (
       <div class='container'>
 
-        <h2>{this.props.currentArtist.name}</h2><DeleteArtist id={this.props.currentArtist.id} deleteArtist={this.props.deleteArtist}/>
         <br/><br/>
         <div class='row'>
           <div class='col-lg'>
-            <img class='img' src={this.props.currentArtist.image_url}/>
+            <h2>{this.props.currentArtist.name}</h2><br/>
+            <img class='img-fluid' style={{style:'100%'}}src={this.props.currentArtist.image_url}/><br/><br/>
+            <DeleteArtist id={this.props.currentArtist.id} deleteArtist={this.props.deleteArtist}/><br/>
           </div>
           <div className='col-lg'>
             <ConcertList
-              concerts={this.props.concerts}
-              addConcert={this.props.add}/>
+            concerts={this.props.concerts}
+            addConcert={this.props.add}/>
           </div>
         </div>
       </div>

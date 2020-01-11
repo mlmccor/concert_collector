@@ -25,9 +25,10 @@ class Home extends Component {
 
 
   render() {
-    let blah
+    let view
+
     if (this.props.currentArtist.name) {
-      blah = <CurrentArtist
+      view = <CurrentArtist
         currentArtist={this.props.currentArtist} getConcerts={this.props.getConcerts} concerts={this.props.artistConcerts}
         add={this.props.addConcert}
         deleteArtist={this.props.deleteArtist}/>
@@ -39,7 +40,7 @@ class Home extends Component {
         <br/>
         {this.searching()}
 
-        {blah}
+        {view}
         <br/>
 
       </div>

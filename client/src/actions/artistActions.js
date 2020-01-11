@@ -15,7 +15,6 @@ export function searchArtist(data) {
       body: JSON.stringify({query: newData})
     })
     .then(resp => resp.json()).then(results => {
-      console.log(results)
       if (results.data) {
         return dispatch({type: 'NO_ARTIST'})
       } else {
@@ -88,7 +87,6 @@ export function fetchMyArtists() {
 
 export function selectArtist(id, name) {
   let image_url = `https://images.sk-static.com/images/media/profile_images/artists/${id}/huge_avatar`
-  console.log(id, name)
   return (dispatch) => {
     dispatch({type: 'FINDING_ARTIST'});
     let token = document.querySelector('meta[name="csrf-token"]').content
