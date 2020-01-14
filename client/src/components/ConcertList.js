@@ -5,7 +5,13 @@ class ConcertList extends Component {
 
   generateConcerts() {
     return this.props.concerts.map((concert) => {
-      let newDate = new Date(concert.start.datetime)
+      let newDate
+      if (concert.start.datetime) {
+        newDate = new Date(concert.start.datetime.substring(0, concert.start.datetime.length - 5))
+      } else {
+        debugger
+        newDate = new Date(concert.start.date)
+      }
       let time = newDate.getHours() + ':' + newDate.getMinutes()
       return <Concert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'} time={newDate.getTime()} addConcert={this.props.addConcert} artistId = {this.props.artistId}/>
     })

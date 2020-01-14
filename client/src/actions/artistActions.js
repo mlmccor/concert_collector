@@ -45,7 +45,14 @@ export function getArtistConcerts(artistId) {
 }
 
 export function addConcert(concert, artistId) {
-  let newConcert = {artist_id: artistId, concert: {id: concert.id, datetime: concert.start.dateTime, venue_name: concert.venue.displayName, venue_city: concert.venue.metroArea.displayName, venue_country: concert.venue.metroArea.country.displayName, past_event: false }}
+  debugger
+  let datetime
+  if (concert.start.dateTime) {
+    datetime = concert.start.dateTime
+  } else {
+    datetime = concert.start.date
+  }
+  let newConcert = {artist_id: artistId, concert: {id: concert.id, datetime: datetime, venue_name: concert.venue.displayName, venue_city: concert.venue.metroArea.displayName, venue_country: concert.venue.metroArea.country.displayName, past_event: false }}
    if (concert.venue.metroArea.state) {
      newConcert.concert.venue_region = concert.venue.metroArea.state.displayName
    }
