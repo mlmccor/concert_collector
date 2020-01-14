@@ -39,14 +39,16 @@ export function getArtistConcerts(artistId) {
       body: JSON.stringify({id: artistId})
     }).then(response => response.json())
       .then(calendarObject => {
-        debugger
-
         return dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
       })
   })
 }
 
-export function addConcert(concert) {
+export function addConcert(concert, artistId) {
+  let newConcert = {artist_id: artistId, concert: {id: concert.id, datetime: concert.start.dateTime, venue_name: concert.venue.displayName, venue_city: concert.venue.metroArea.displayName, venue_country: concert.venue.metroArea.country.displayName, past_event: false }}
+   if (concert.venue.metroArea.state) {
+     newConcert.concert.venue_region = concert.venue.metroArea.state.displayName
+   }
   return (dispatch => {
     dispatch({type: 'PREPARING_ARTISTS'})
     let token = document.querySelector('meta[name="csrf-token"]').content;
@@ -58,7 +60,7 @@ export function addConcert(concert) {
         'X-CSRF-Token': token
       },
       redirect: "error",
-      body: JSON.stringify(concert)
+      body: JSON.stringify(newConcert)
     }).then(response => response.json()).then(concert => {
       debugger
       dispatch({type: 'ADD_SUCCESS'})
@@ -102,7 +104,6 @@ export function selectArtist(id, name) {
       body: JSON.stringify({id: id, name: name, image_url: image_url})
     })
     .then(resp => resp.json()).then(artist => {
-      debugger
       return dispatch({type:'SELECT_ARTIST', payload: artist})
     })
   }

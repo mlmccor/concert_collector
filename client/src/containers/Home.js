@@ -58,6 +58,6 @@ const mapDispatchToProps = (dispatch) => ({
   deleteArtist: (id) => dispatch(deleteArtist(id)),
   getConcerts: (id) => dispatch(getArtistConcerts(id)),
   getMyArtists: () => dispatch(fetchMyArtists()),
-  addConcert: (concert) => dispatch(addConcert(concert))
+  addConcert: (concert, artistId) => dispatch(addConcert(concert, artistId))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

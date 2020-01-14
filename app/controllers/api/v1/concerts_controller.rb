@@ -21,14 +21,11 @@ module Api
       end
 
       def create
+        # old API format
         concert = Concert.find_or_create_by(concert_params)
+        binding.pry
         artist = Artist.find(params[:artist_id])
         concert.artist = artist
-        concert.venue_name = params[:venue][:name]
-        concert.venue_city = params[:venue][:city]
-        concert.venue_region = params[:venue][:region]
-        concert.venue_country = params[:venue][:country]
-        concert.past_event = false
         if user_signed_in?
           current_user.concerts.push(concert)
           render json: concert, status: 201
@@ -51,7 +48,7 @@ module Api
 
 
       def concert_params
-        params.require(:concert).permit(:on_sale_datetime, :datetime, :venue_name, :venue_country, :venue_region, :venue_city, :past_event)
+        params.require(:concert).permit(:id, :datetime, :venue_name, :venue_country, :venue_region, :venue_city, :past_event)
       end
     end
   end

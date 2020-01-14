@@ -26,12 +26,13 @@ class CurrentArtist extends Component {
         <div class='row'>
           <div class='col-lg'>
             <h2>{this.props.currentArtist.name}</h2><br/>
-            <img class='img-fluid' style={{style:'100%'}}src={this.props.currentArtist.image_url}/><br/><br/>
+            <img class='img-fluid' src={this.props.currentArtist.image_url}/><br/><br/>
             <DeleteArtist id={this.props.currentArtist.id} deleteArtist={this.props.deleteArtist}/><br/>
           </div>
           <div className='col-lg'>
             <ConcertList
             concerts={this.props.concerts}
+            artistId = {this.props.currentArtist.id}
             addConcert={this.props.add}/>
           </div>
         </div>
