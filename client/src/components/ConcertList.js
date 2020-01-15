@@ -11,7 +11,6 @@ class ConcertList extends Component {
       } else {
         newDate = new Date(concert.start.date)
       }
-      debugger
       let time = newDate.toLocaleTimeString()
       return <Concert concert={concert} date={newDate.toDateString() + ' at ' + time} time={newDate.getTime()} addConcert={this.props.addConcert} artistId = {this.props.artistId}/>
     })

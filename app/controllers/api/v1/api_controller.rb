@@ -18,11 +18,7 @@ module Api
         end
       end
 
-      def add_artist
-        # saves artist to database
-        # adds image
-        # 
-      end
+      
       def fetch_concerts
         #
         response = Faraday.get("https://api.songkick.com/api/3.0/artists/#{params[:id]}/calendar.json?apikey=#{ENV['APP_ID']}")

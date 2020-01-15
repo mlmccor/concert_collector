@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import {searchArtist, selectArtist, getArtistConcerts, addConcert, fetchMyArtists, deleteArtist} from '../actions/artistActions'
+import {searchArtist, selectSearchedArtist, getArtistConcerts, addConcert, fetchMyArtists, deleteArtist, selectArtist} from '../actions/artistActions'
 
 import SearchBar from '../components/SearchBar'
 import CurrentArtist from './CurrentArtist'
@@ -17,9 +17,11 @@ class Home extends Component {
     this.props.getMyArtists()
   }
 
+  // rename all selectArtist props in child components
+
   searching() {
     if (this.props.searching) {
-      return <SearchResults results={this.props.searchResults} selectArtist={this.props.selectArtist}/>
+      return <SearchResults results={this.props.searchResults} selectArtist={this.props.selectSearchedArtist}/>
     }
   }
 
@@ -42,7 +44,7 @@ class Home extends Component {
 
         {view}
         <br/>
-
+        <ArtistsCollection artistList={this.props.myArtists} selectArtist={this.props.selectArtist} />
       </div>
     )
   }
@@ -54,10 +56,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getArtist: (data) => dispatch(searchArtist(data)),
-  selectArtist: (id, name) => dispatch(selectArtist(id, name)),
+  selectSearchedArtist: (id, name) => dispatch(selectSearchedArtist(id, name)),
   deleteArtist: (id) => dispatch(deleteArtist(id)),
   getConcerts: (id) => dispatch(getArtistConcerts(id)),
   getMyArtists: () => dispatch(fetchMyArtists()),
-  addConcert: (concert, artistId) => dispatch(addConcert(concert, artistId))
+  addConcert: (concert, artistId) => dispatch(addConcert(concert, artistId)),
+  selectArtist: (id) => dispatch(selectArtist(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

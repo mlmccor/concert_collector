@@ -94,7 +94,7 @@ export function fetchMyArtists() {
   }
 }
 
-export function selectArtist(id, name) {
+export function selectSearchedArtist(id, name) {
   let image_url = `https://images.sk-static.com/images/media/profile_images/artists/${id}/huge_avatar`
   return (dispatch) => {
     dispatch({type: 'FINDING_ARTIST'});
@@ -131,6 +131,25 @@ export function deleteArtist(id) {
     })
     .then(resp => resp.json()).then(artist => {
       return dispatch({type:'REMOVE_ARTIST', payload: artist})
+    })
+  }
+}
+
+export function selectArtist(id) {
+  debugger
+  return (dispatch) => {
+    dispatch({type: 'FINDING_ARTIST'})
+    let token = document.querySelector('meta[name="csrf-token"]').content
+    return fetch(`/api/v1/artists/${id}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error"
+    }).then(response => response.json()).then(artist => {
+      return dispatch({type: 'SELECT_MY_ARTIST', payload: artist})
     })
   }
 }

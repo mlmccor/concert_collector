@@ -10,7 +10,7 @@ class CurrentArtist extends Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.currentArtist !== prevProps.currentArtist) {
-      this.props.getConcerts(this.props.currentArtist.name)
+      this.props.getConcerts(this.props.currentArtist.id)
     }
   }
 
