@@ -23,7 +23,6 @@ module Api
       def create
         # old API format
         concert = Concert.find_or_create_by(concert_params)
-        binding.pry
         artist = Artist.find(params[:artist_id])
         concert.artist = artist
         if user_signed_in?

@@ -21,8 +21,8 @@ const MyConcertList = ({concerts, removeConcert}) => {
             improvedDate = concert.datetime.substring(0, concert.datetime.length - 1)
           }
           let newDate = new Date(improvedDate)
-          let time = newDate.getHours() + ':' + newDate.getMinutes()
-          return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time + '0'}  removeConcert={removeConcert}/>
+          let time = newDate.toLocaleTimeString()
+          return <MyConcert concert={concert} date={newDate.toDateString() + ' at ' + time}  removeConcert={removeConcert}/>
         })}
       </ul>
       <h4>Past Concerts</h4>

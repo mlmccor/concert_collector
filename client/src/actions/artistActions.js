@@ -45,10 +45,11 @@ export function getArtistConcerts(artistId) {
 }
 
 export function addConcert(concert, artistId) {
-  debugger
   let datetime
-  if (concert.start.dateTime) {
-    datetime = concert.start.dateTime
+  if (concert.start.datetime) {
+    datetime = concert.start.datetime
+    // format datetime for rails server
+    datetime = datetime.substring(0, datetime.length - 5)
   } else {
     datetime = concert.start.date
   }
@@ -69,7 +70,6 @@ export function addConcert(concert, artistId) {
       redirect: "error",
       body: JSON.stringify(newConcert)
     }).then(response => response.json()).then(concert => {
-      debugger
       dispatch({type: 'ADD_SUCCESS'})
       return dispatch({type: 'ADD_CONCERT', payload: concert})
     })
