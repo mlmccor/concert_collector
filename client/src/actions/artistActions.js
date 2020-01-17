@@ -39,7 +39,12 @@ export function getArtistConcerts(artistId) {
       body: JSON.stringify({id: artistId})
     }).then(response => response.json())
       .then(calendarObject => {
-        return dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
+        if (calendarObject.resultsPage.totalEntries === 0) {
+          dispatch({type: 'NO_ARTIST_CONCERTS'})
+          return dispatch({type: 'NO_CONCERTS'})
+        } else {
+          return dispatch({type: 'ADD_ARTIST_CONCERTS', payload: calendarObject.resultsPage.results.event})
+        }
       })
   })
 }

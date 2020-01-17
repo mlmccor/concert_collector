@@ -10,7 +10,7 @@ class ConcertList extends Component {
   }
 
   generateConcerts() {
-
+    if (!this.props.concerts) return null 
     return this.props.concerts.map((concert) => {
       let newDate
       let time

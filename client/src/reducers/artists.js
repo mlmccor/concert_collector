@@ -20,6 +20,8 @@ export default (state = {currentArtist: {}, myArtists: [], artistConcerts: [], s
       return {...state, currentArtist: action.payload}
     case 'REMOVE_ARTIST':
       return {...state, currentArtist: {}, myArtists: [...state.myArtists.filter(artist => artist.id !== action.payload.id)]}
+    case 'NO_ARTIST_CONCERTS':
+      return {...state, artistConcerts: []}
     default:
       return state
   }
