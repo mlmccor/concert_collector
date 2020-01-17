@@ -3,15 +3,26 @@ import Concert from './Concert'
 
 class ConcertList extends Component {
 
+  formatDate(dateString) {
+    let dateArray = dateString.split(/\W|[T]/)
+    return new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5])
+
+  }
+
   generateConcerts() {
+
     return this.props.concerts.map((concert) => {
       let newDate
+      let time
       if (concert.start.datetime) {
-        newDate = new Date(concert.start.datetime.substring(0, concert.start.datetime.length - 5))
+        let dateArray = concert.start.datetime.split(/\W|[T]/)
+        newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5])
+        time = newDate.toLocaleTimeString()
       } else {
-        newDate = new Date(concert.start.date)
+        let dateArray = concert.start.date.split(/\W|[T]/)
+        newDate = new Date(dateArray[0], dateArray[1], dateArray[2])
+        time = "No Time Listed"
       }
-      let time = newDate.toLocaleTimeString()
       return <Concert concert={concert} date={newDate.toDateString() + ' at ' + time} time={newDate.getTime()} addConcert={this.props.addConcert} artistId = {this.props.artistId}/>
     })
   }

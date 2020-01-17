@@ -136,7 +136,6 @@ export function deleteArtist(id) {
 }
 
 export function selectArtist(id) {
-  debugger
   return (dispatch) => {
     dispatch({type: 'FINDING_ARTIST'})
     let token = document.querySelector('meta[name="csrf-token"]').content
