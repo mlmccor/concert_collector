@@ -56,6 +56,7 @@ export function addConcert(concert, artistId) {
     // format datetime for rails server
     datetime = datetime.substring(0, datetime.length - 5)
   } else {
+    // uses date without time
     datetime = concert.start.date
   }
   let newConcert = {artist_id: artistId, concert: {id: concert.id, datetime: datetime, venue_name: concert.venue.displayName, venue_city: concert.venue.metroArea.displayName, venue_country: concert.venue.metroArea.country.displayName, past_event: false }}

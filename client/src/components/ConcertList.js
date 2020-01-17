@@ -10,20 +10,17 @@ class ConcertList extends Component {
   }
 
   generateConcerts() {
-    if (!this.props.concerts) return null 
+    if (!this.props.concerts) return null
     return this.props.concerts.map((concert) => {
       let newDate
-      let time
       if (concert.start.datetime) {
         let dateArray = concert.start.datetime.split(/\W|[T]/)
         newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5])
-        time = newDate.toLocaleTimeString()
       } else {
         let dateArray = concert.start.date.split(/\W|[T]/)
         newDate = new Date(dateArray[0], dateArray[1], dateArray[2])
-        time = "No Time Listed"
       }
-      return <Concert concert={concert} date={newDate.toDateString() + ' at ' + time} time={newDate.getTime()} addConcert={this.props.addConcert} artistId = {this.props.artistId}/>
+      return <Concert concert={concert} date={newDate}  addConcert={this.props.addConcert} artistId = {this.props.artistId}/>
     })
   }
 
