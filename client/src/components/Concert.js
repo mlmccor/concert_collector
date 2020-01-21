@@ -14,7 +14,7 @@ const Concert = ({date, concert, addConcert, artistId}) => {
   return (
     <div className='card'>
       <div className='card-body'>
-        <p className='card-title' id='concert'>{date.toDateString()}</p>
+        <p className='card-title' id='concert'>{date.toLocaleDateString()}</p>
         <p className='card-text'>{timeString()}</p>
         <p className='card-text'>
         {concert.venue.metroArea.displayName}, {concert.venue.metroArea.state ? concert.venue.metroArea.state.displayName : false}, {concert.venue.metroArea.country.displayName}

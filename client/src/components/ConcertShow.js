@@ -23,15 +23,13 @@ class ConcertShow extends Component {
 
     }
     let newDate = new Date(realDate)
-    let time = newDate.toLocaleTimeString()
     return (
       <div>
         <h4>Artist: {this.generateArtist()}</h4>
         <p>Date: {newDate.toLocaleDateString()}</p>
-        <p>Time: {time}</p>
+        <p>Time: {newDate. toLocaleTimeString()}</p>
         <p>Venue: {this.props.concertData.venue_name}</p>
-        <p>{this.props.concertData.venue_city},
-             {this.props.concertData.venue_region} {this.props.concertData.venue_country}</p>
+        <p>{this.props.concertData.venue_city}, {this.props.concertData.venue_region}, {this.props.concertData.venue_country}</p>
       </div>
     )
   }
